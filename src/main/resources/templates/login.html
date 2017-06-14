@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+</head>
+<body>
+	<div sec:authorize="isAuthenticated()">
+		<h1>Logged User</h1>
+		User : <span style="font-weight: bold"
+			sec:authentication="principal.name"></span> Username : <span
+			style="font-weight: bold" sec:authentication="principal.username"></span>
+		Roles : <span style="font-weight: bold"
+			sec:authentication="principal.authorities"></span>
+		<form action="#" th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
+	</div>
+	<div sec:authorize="!isAuthenticated()">
+		<form action="#" th:action="${/login}" method="post">
+			<div>
+				Username :<input type="text" name="username"
+					placeholder="Enter Username" />
+			</div>
+			<div>
+				Password :<input type="password" name="password"
+					placeholder="Enter Password" />
+			</div>
+			<span th:if="${param.loggedout}" style="font-weight: bold" id = "logout">Logout effettuato, torna alla <a href="${/index}">home</a></span>
+            <span th:if="${param.error}" style="font-weight: bold" id="error">Username e/o Password invalidi</span>
+			<input type="submit" value="Login" />
+			<form action="#" th:action="@{/register}" method="get">
+				<input type="submit" value="Registrati" />
+			</form>
+		</form>
+	</div>
+
+</body>
+</html>
