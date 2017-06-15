@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -35,6 +36,54 @@ public class Quadro{
 		return id;
 	}
 
+=======
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Entity
+public class Quadro{
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotEmpty // corrisponde a @size(min=1) @NotBlank fa il trim e se vuota false
+	private String titolo;
+	@NotNull
+	private String anno;
+	@NotNull
+	private String tecnica;
+	@NotNull
+	private String dimensione;
+	@NotBlank
+	@ManyToOne
+	private Autore autore;
+	
+	protected Quadro(){}
+	public Quadro(String titolo, String anno, String tecnica, String dimensione, Autore autore){
+		this.titolo=titolo;
+		this.anno=anno;
+		this.tecnica=tecnica;
+		this.dimensione=dimensione;
+		this.autore=autore;
+	}
+	
+	//getter e setter
+	
+	public Long getId() {
+		return id;
+	}
+
+	public Autore getAutore() {
+		return autore;
+	}
+	public void setAutore(Autore autore) {
+		this.autore = autore;
+	}
+>>>>>>> branch 'master' of https://github.com/tarma-ta/progetto-siw.git
 	public void setId(Long id) {
 		this.id = id;
 	}

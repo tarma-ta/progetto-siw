@@ -11,6 +11,10 @@ public interface QuadroRepository  extends CrudRepository <Quadro, Long>  {
 
 	Quadro findByTitolo(String titolo);
 	List<Quadro> findByTecnica(String tecnica);
+<<<<<<< HEAD
 	List<Quadro> findByAutore(Autore autore);
+=======
+	List<Quadro> findByAutore(String autore);
+>>>>>>> branch 'master' of https://github.com/tarma-ta/progetto-siw.git
 	List<Quadro> findAll();
 }

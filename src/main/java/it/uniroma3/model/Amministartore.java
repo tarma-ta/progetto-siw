@@ -1,5 +1,9 @@
 package it.uniroma3.model;
 
+<<<<<<< HEAD
+=======
+import javax.annotation.Generated;
+>>>>>>> branch 'master' of https://github.com/tarma-ta/progetto-siw.git
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
